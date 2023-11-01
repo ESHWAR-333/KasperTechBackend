@@ -43,5 +43,29 @@ router.post("/insert", async (req, res) => {
     }
   });
 
+
+  router.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res.status(400).send("Invalid user");
+      }
+  
+      const isPasswordMatch = await bcrypt.compare(password, user.password);
+      if (isPasswordMatch) {
+        const payload = { email: user.email };
+        const jwtToken = jwt.sign(payload, "MY_SECRET_TOKEN");
+        res.json({ jwtToken });
+      } else {
+        res.status(400).send("Invalid password");
+      }
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send("Server error");
+    }
+  });
+
 module.exports=router
 
