@@ -6,13 +6,13 @@ const registrationRoutes=require('./controllers/registration.controller')
 const app=express();
 
 app.use(bodyParser.json());
-app.use('/api/employees',registrationRoutes)
+app.use('/api/registration',registrationRoutes)
 
 
 
 connectDb()
 .then(()=>{
     console.log('db connection succeeded');
-    app.listen(3030,()=>{console.log("server is running on port no 3000")})
+    app.listen(3030,()=>{console.log("server is running on port no 3030")})
 })
 .catch((err)=>console.log(err))
