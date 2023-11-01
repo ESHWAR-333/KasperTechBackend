@@ -5,6 +5,10 @@ const connectDb=require('./db.js')
 const registrationRoutes=require('./controllers/registration.controller')
 const app=express();
 
+const cors = require('cors');
+
+app.use(cors());
+
 app.use(bodyParser.json());
 app.use('/api/registration',registrationRoutes)
 
