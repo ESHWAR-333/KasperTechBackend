@@ -16,7 +16,7 @@ router.get('/',(req,res)=>{
 // })
 
 
-router.post("//insert", async (req, res) => {
+router.post("/insert", async (req, res) => {
     const { firstName, lastName, email, password } = req.body;
   
     try {
