@@ -3,6 +3,7 @@ const bodyParser=require('body-parser')
 
 const connectDb=require('./db.js')
 const registrationRoutes=require('./controllers/registration.controller')
+const deviceRoutes=require('./controllers/device.controller.js')
 const app=express();
 
 const cors = require('cors');
@@ -10,7 +11,8 @@ const cors = require('cors');
 app.use(cors());
 
 app.use(bodyParser.json());
-app.use('/api/registration',registrationRoutes)
+app.use('/',registrationRoutes)
+app.use('/',deviceRoutes)
 
 
 
