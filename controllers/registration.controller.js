@@ -20,7 +20,7 @@ router.post("/insert", async (req, res) => {
     const { firstName, lastName, email, password } = req.body;
   
     try {
-      const existingUser = await Registartion.findOne({ username });
+      const existingUser = await Registartion.findOne({ email });
       if (existingUser) {
         return res.status(400).send("User already exists");
       }
