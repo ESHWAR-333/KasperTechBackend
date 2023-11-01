@@ -16,7 +16,14 @@ router.post('/devices/create', async (req, res) => {
     }
   });
 
-  
+
+  router.get('/devices',(req,res)=>{
+    Device.find()
+    .then(data=>res.send(data))
+    .catch(err=>console.log(err))
+})
+
+
 router.put('/devices/:deviceId', async (req, res) => {
   const { light, fan, misc } = req.body;
   try {
