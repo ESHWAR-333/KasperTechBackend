@@ -26,9 +26,11 @@ router.post('/devices/create', async (req, res) => {
 
 router.put('/devices/:deviceId', async (req, res) => {
   const { light, fan, misc } = req.body;
+  const deviceId = req.params.deviceId;
+  console.log('Received Device ID:', deviceId);
   try {
     const device = await Device.findByIdAndUpdate(
-      req.params.deviceId,
+     deviceId,
       { $set: { 'state.light': light, 'state.fan': fan, 'state.misc': misc } },
       { new: true }
     );
